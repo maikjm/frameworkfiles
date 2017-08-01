@@ -1,5 +1,5 @@
-#include "glovehttpcommon.hpp"
-#include "utils.hpp"
+#include "frameworkfiles/glovehttpcommon.hpp"
+#include "frameworkfiles/utils.hpp"
 
 #define AddGloveHttpResponse(response, text, description)	\
   {response, {text, description} }
@@ -49,34 +49,24 @@ const short GloveHttpResponseCode::RANGE_NOT_SATISF = 416;
 const short GloveHttpResponseCode::EXPECTATION_FAILED = 417;
 const short GloveHttpResponseCode::IM_A_TEAPOT = 418;
 const short GloveHttpResponseCode::AUTH_TIMEOUT = 419; // Not standard
-/* 420 (Method Failure - Spring Framework)
-   Not part of the HTTP standard, but defined by Spring in the HttpStatus 
-   class to be used when a method failed. This status code is deprecated 
-   by Spring. */
-/* 420 (Emhance Your Calm - Twitter)
-   Not part of the HTTP standard, but returned by version 1 of the Twitter 
-   Search and Trends API when the client is being rate limited.[16] Other 
-   services may wish to implement the 429 Too Many Requests response code instead. */
-/* 421 (Unused) */
+
 const short GloveHttpResponseCode::UNPROC_ENTITY = 422;   // WebDAV
 const short GloveHttpResponseCode::LOCKED = 423;	    // WebDAV
 const short GloveHttpResponseCode::FAILED_DEPEND = 424;   // WebDAV
-/* 425 (Unused) */
+/
 const short GloveHttpResponseCode::UPGRADE_REQUIRED = 426;
-/* 427 (Unused) */
+
 const short GloveHttpResponseCode::PRECOND_REQUIRED = 428;
 const short GloveHttpResponseCode::TOO_MANY_REQUESTS = 429;
-/* 430 (Unused) */
+
 const short GloveHttpResponseCode::HEADER_TOO_LARGE = 431;
-/* From 432 there are no used codes. 
-   But some of them are used by certain servers (not as part of the standard) */
+
 const short GloveHttpResponseCode::LOGIN_TIMEOUT = 440;     // Microsoft
 const short GloveHttpResponseCode::NO_RESPONSE = 444;	      // Nginx
 const short GloveHttpResponseCode::RETRY_WITH = 449;	      // Microsoft
 const short GloveHttpResponseCode::BLOCKED_PARENTAL = 450;  // Microsoft
 const short GloveHttpResponseCode::UNAVAILABLE_LEGAL = 451; // Draft: http://tools.ietf.org/html/draft-tbray-http-legally-restricted-status-04
 
-/* 5XX server's fault */
 const short GloveHttpResponseCode::INTERNAL_ERROR = 500;
 const short GloveHttpResponseCode::NOT_IMPLEMENTED = 501;
 const short GloveHttpResponseCode::BAD_GATEWAY = 502;
@@ -92,7 +82,6 @@ const short GloveHttpResponseCode::NW_AUTH_REQ = 511;
 
 const std::map <short, GloveHttpResponseCode::ResponseCode> GloveHttpResponseCode::responseCodes = 
   {
-    // List of http status codes (http://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
     /* 1XX informational */
     AddGloveHttpResponse(CONTINUE,          "Continue",             		"The client can continue sending the request body"),
     AddGloveHttpResponse(SWITCH_PROTOCOLS,  "Switching Protocols",  		"Client requested to switch protocols and the server will do so"),

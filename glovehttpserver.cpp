@@ -1,96 +1,6 @@
-/**
-*************************************************************
-* @file glovehttpserver.cpp
-* @brief Tiny http C++11 server using glove with routing and
-*        come cool stuff
-*
-* @author Gaspar Fernández <blakeyed@totaki.com>
-* @version
-* @date 03 apr 2015
-*
-* Notes:
-*  - Based on ideas taken on some PHP Frameworks, Java Servlets 
-*    and more. Not intended to use it on big or public websites.
-*    Just to use it in an internal and controlled way.
-*
-* Changelog:
-*  20170403 : Directive ENABLE_WEBSOCKETS to compile with or without
-*             Websockets support
-*  20170403 : Helper methods auth(), checkPassword(), getAuthUser() for client
-*             callbacks
-*  20170401 : Digest Authentication Method
-*  20170330 : Basic Authentication Method
-*  20170327 : Response::clear adds clearHeaders argument. Default to true
-*  20170112 : std::cout removed
-*  20161016 : GloveHttpRequest object's isLocal() method to know if it's a local
-*           : connection.
-*  20161004 : Minor connection bugs fixed
-*  20161003 : Fixed bug. Error 500 when compression not enabled.
-*           : HTTPS server
-*  20161001 : Basic WebSockets support with. server.addWebSocket adds
-*           : web socket route.
-*  20160929 : fixed bug when clearing output
-*           : ability to change headers from response object
-*           : added compression support with zlib
-*  20160928 : addRest and overloads to get easy RESTful Api.
-*           : Error handler and exception (GloveApiException) for Api.
-*  20160916 : addRoute has one more argument (minArgs).
-*             addRoute overloaded with simpler access.
-*  20160919 : More options to get data from requests GetData(), GetDatacol()
-*  20160421 : some server info extracted
-*  20160420 : application/x-www-form-urlencoded arguments parse
-*  20160418 : Response processors can be disabled
-*  20160116 : Base constructor
-*  20151009 : Bug fixing, max_clients and timeout added to the constructor
-*             GloveHttpServer. You also have getters and setters for that.
-*  20151009 : Added keep-alive support, with configurable keepalive_timeout
-*  20151008 : Create fileServerExt to include local file paths
-*  20151007 : 5 more MIME Types
-*  20150430 : Some documentation for Doxygen in the .h
-*  20150411 : Basic virtualHost support
-*  20150410 : Errors separated to GloveHttpErrors
-*  20150410 : Some bug fixing
-*  20150404 : Added HTTP Response data
-*  20150403 : Begin this project
-* 
-* To-do:
-*   - Error checking for addResponseProcessor() and addResponseGenericProcessor()
-*   - Error checking for addAutoResponse() and autoResponses()
-*   - Error checking for addRoute()
-*   - Metrics into virtualhosts
-*   - Documentation !!
-*   - Loooots of things more and RFCs compliances
-*   - Max. size of strings
-*   - Size test of strings
-*   - Be able to process FastCGI requests to use with Apache/NGinx and more
-*   - Cache managing
-*
-* MIT Licensed:
-* Copyright (c) 2014 Gaspar Fernández
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-* 
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-* 
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-* 
-*************************************************************/
-
-#include "glovehttpserver.hpp"
-#include "utils.hpp"
-#include "glovecoding.hpp"
+#include "frameworkfiles/glovehttpserver.hpp"
+#include "frameworkfiles/utils.hpp"
+#include "frameworkfiles/glovecoding.hpp"
 #include <thread>
 #include <map>
 #include <string>
@@ -267,9 +177,6 @@ std::vector<std::pair<std::string, std::string> > GloveHttpRequest::getDataCol(s
 				}
       else
 				{
-					/* Replace [] with [ to save brackets.
-						 We can use regex in the future when
-						 fully supported */
 					auto brackets = el.find("[]");
 					if (brackets != std::string::npos)
 						el.replace(brackets, 2, "[");
