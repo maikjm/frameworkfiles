@@ -53,7 +53,7 @@ const short GloveHttpResponseCode::AUTH_TIMEOUT = 419; // Not standard
 const short GloveHttpResponseCode::UNPROC_ENTITY = 422;   // WebDAV
 const short GloveHttpResponseCode::LOCKED = 423;	    // WebDAV
 const short GloveHttpResponseCode::FAILED_DEPEND = 424;   // WebDAV
-/
+
 const short GloveHttpResponseCode::UPGRADE_REQUIRED = 426;
 
 const short GloveHttpResponseCode::PRECOND_REQUIRED = 428;

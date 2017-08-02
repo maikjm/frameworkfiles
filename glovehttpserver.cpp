@@ -11,7 +11,7 @@
 #include <iostream>
 
 #if ENABLE_COMPRESSION
-#include "glovecompress.hpp"
+#include "frameworkfiles/glovecompress.hpp"
 #endif
 using namespace std; //--> ojo 
 const std::vector < std::string> GloveHttpServer::StandardMethods ={ "GET", "POST" };
